@@ -8,6 +8,11 @@ an executable.
 To do this (let me know if this doesn't work):
 - All: `clang++ wordCount.cpp -o main -std=c++17`
 
+The file included in the respository is a test text file that you can give to
+the executable.
+
+`./main file.txt`
+
 ## To do
 - [ ] Do something more with the numbers that are gathered.
 
