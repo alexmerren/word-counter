@@ -9,34 +9,34 @@
     Function to check the amount of parameters given to the file.
     @param t_amountOfParams the amount of params given to the file.
 */
-void checkParams(int t_amountOfParams);
+void checkParams(int& t_amountOfParams);
 
 /**
     Function to check if a character is allowed to be counted of not.
     @param t_character The character you want to check.
     @return bool True if it is valid, false if not.
 */
-bool isCharacterValid(char t_character);
+bool isCharacterValid(char& t_character);
 
 /**
     Function to create a map of the characters and their occurences.
     @param t_path A path of the file that you count the characters of.
     @return A map of the characters and their counters.
 */
-std::map<char, int> countCharacters(std::string t_path);
+std::map<char, int> countCharacters(std::string&& t_path);
 
 /**
     Function to invert the map keys and values.
     @param t_inputMap The map created in countCharacters().
     @return A map of the counters and the characters.
 */
-std::map<int, char> invertMap(std::map<char,int> t_inputMap);
+std::map<int, char> invertMap(std::map<char,int>& t_inputMap);
 
 /**
     Function to print a "graph" of the vaues in the inverted map.
     @param t_inputMap The map created in invertMap(). 
 */
-void graphMap(std::map<int, char> t_intputMap);
+void graphMap(std::map<int, char>& t_intputMap);
 
 int main(int argc, char* argv[])
 {	
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void checkParams(int t_amountOfParams)
+void checkParams(int& t_amountOfParams)
 {
     if (t_amountOfParams == 1)
     {
@@ -64,7 +64,7 @@ void checkParams(int t_amountOfParams)
     }
 }
 
-bool isCharacterValid(char t_character)
+bool isCharacterValid(char& t_character)
 {
     // Vector of characters that you don't want to count.
     std::vector disallowedChars {'\n', ' ', '.'};
@@ -78,7 +78,7 @@ bool isCharacterValid(char t_character)
     return false;
 }
 
-std::map<char, int> countCharacters(std::string t_path) 
+std::map<char, int> countCharacters(std::string&& t_path) 
 {
 	char character;
 	
@@ -108,7 +108,7 @@ std::map<char, int> countCharacters(std::string t_path)
 	return outputMap;
 }
 
-std::map<int, char> invertMap(std::map<char,int> t_inputMap)
+std::map<int, char> invertMap(std::map<char,int>& t_inputMap)
 {
 	std::map<int, char> outputMap;
 	
@@ -120,7 +120,7 @@ std::map<int, char> invertMap(std::map<char,int> t_inputMap)
 	return outputMap;
 }
 
-void graphMap(std::map<int, char> t_inputMap)
+void graphMap(std::map<int, char>& t_inputMap)
 {	
 	// Loop through the pairs in the map given in the parameters
 	for (auto& pair : t_inputMap)
