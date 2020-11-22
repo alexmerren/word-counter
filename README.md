@@ -1,18 +1,14 @@
 # word-counter
 A C++ program I made to count the frequency of characters in a text file.
 
-## Getting started
-In order to use this program, you need to compile the source code into
-an executable.
+## Compiling the program
+In order to compile the program for use, run the following command:
+`clang++ wordCount.cpp -o word -std=c++17`
+If you do not have clang++ installed on your machine, g++ should be:
+`g++ wordCount.cpp -o word -std=c++17`
 
-To do this (let me know if this doesn't work):
-- All: `clang++ wordCount.cpp -o main -std=c++17`
-
-The file included in the respository is a test text file that you can give to
-the executable.
-
-`./main file.txt`
-
-## To do
-- [ ] Do something more with the numbers that are gathered.
-
+## Running the program
+After compiling the program, there will be a file in the directory along the lines of 'word'.
+To run, you can type
+`./word frankenstein.txt`
+The program will then output the results onto the terminal screen.

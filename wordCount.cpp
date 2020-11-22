@@ -7,36 +7,43 @@
 
 /**
     Function to check the amount of parameters given to the file.
-    @param t_amountOfParams the amount of params given to the file.
+    @param  t_amountOfParams the amount of params given to the file.
 */
 void checkParams(int t_amountOfParams);
 
 /**
     Function to check if a character is allowed to be counted of not.
-    @param t_character The character you want to check.
-    @return bool True if it is valid, false if not.
+    @param  t_character The character you want to check.
+    @return  True if it is valid, false if not.
 */
 bool isCharacterValid(char t_character);
 
 /**
     Function to create a map of the characters and their occurences.
-    @param t_path A path of the file that you count the characters of.
-    @return A map of the characters and their counters.
+    @param  t_path A path of the file that you count the characters of.
+    @return  A map of the characters and their counters.
 */
 std::map<char, int> countCharacters(std::string t_path);
 
 /**
     Function to invert the map keys and values.
-    @param t_inputMap The map created in countCharacters().
-    @return A map of the counters and the characters.
+    @param  t_inputMap The map created in countCharacters().
+    @return  A map of the counters and the characters.
 */
 std::map<int, char> invertMap(std::map<char,int>& t_inputMap);
 
 /**
     Function to print a "graph" of the vaues in the inverted map.
-    @param t_inputMap The map created in invertMap(). 
+    @param  t_inputMap The map created in invertMap(). 
 */
 void graphMap(std::map<int, char>& t_intputMap);
+
+/**
+    Function to calculate the largest amount in the map of letters.
+    @param t_inputMap  The map created in invertMap().
+    @return  The largest amount in the map.
+*/
+int calculateLargestAmount(std::map<int, char>& t_inputMap);
 
 int main(int argc, char* argv[])
 {	
@@ -123,12 +130,13 @@ std::map<int, char> invertMap(std::map<char,int>& t_inputMap)
 void graphMap(std::map<int, char>& t_inputMap)
 {	
     int amountOfStars;
+    int largestAmount = calculateLargestAmount(t_inputMap);
 
 	// Loop through the pairs in the map given in the parameters
 	for (const auto& pair : t_inputMap)
 	{
 		// Calculate the amount of stars that need to be printed for this pair.
-		amountOfStars = lround(pair.first/10);
+		amountOfStars = lround(pair.first*100/largestAmount);
 
 		// Print the beginning half of the line with the letter.
 		std::printf("%c - %-3d | ", pair.second, pair.first);
@@ -136,9 +144,19 @@ void graphMap(std::map<int, char>& t_inputMap)
 		// Create a loop that prints a star amountOfStars times.
 	    for (int i = 0; i < amountOfStars; i++) 
 		{
-			std::printf("*");
+			std::printf("|");
 		}
 		// End the line to prepare for a new pair.
 		std::printf("\n");
 	}
+}
+
+int calculateLargestAmount(std::map<int, char>& t_inputMap) 
+{
+    int amount = 0;
+    for (const auto& pair : t_inputMap) 
+    {
+        amount = pair.first;
+    }
+    return amount;
 }
