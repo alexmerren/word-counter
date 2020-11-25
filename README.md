@@ -4,9 +4,9 @@ A C++ program I made to count the frequency of characters in a text file.
 ## Compiling the program
 In order to compile the program for use, run the following command:
 
-`cd word-counter/src
+`cd word-counter/src`
 
-clang++ wordCount.cpp -o word -std=c++17`
+`clang++ wordCount.cpp -o word -std=c++17`
 
 If you do not have clang++ installed on your machine, g++ should be:
 
