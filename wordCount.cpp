@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <algorithm>
 #include <cmath>
+#include <algorithm>
 #include <map>
 #include <vector>
 
@@ -73,16 +73,8 @@ void checkParams(int t_amountOfParams)
 
 bool isCharacterValid(char t_character)
 {
-    // Vector of characters that you don't want to count.
-    std::vector disallowedChars {'\n', ' ', '.'};
-
-    // Very complicated way of searching for t_character in disallowedChars.
-    if (std::find(disallowedChars.begin(), disallowedChars.end(),
-        t_character) == disallowedChars.end())
-    {
-        return true;
-    }
-    return false;
+    // Use the standard isalpha() function to check if it is a letter.
+    return std::isalpha(t_character) ? true : false;
 }
 
 std::map<char, int> countCharacters(std::string t_path) 
@@ -139,12 +131,12 @@ void graphMap(std::map<int, char>& t_inputMap)
 		amountOfStars = lround(pair.first*100/largestAmount);
 
 		// Print the beginning half of the line with the letter.
-		std::printf("%c - %-3d | ", pair.second, pair.first);
+		std::printf("%c - %-6d | ", pair.second, pair.first);
 
 		// Create a loop that prints a star amountOfStars times.
 	    for (int i = 0; i < amountOfStars; i++) 
 		{
-			std::printf("|");
+			std::printf("-");
 		}
 		// End the line to prepare for a new pair.
 		std::printf("\n");
@@ -153,10 +145,7 @@ void graphMap(std::map<int, char>& t_inputMap)
 
 int calculateLargestAmount(std::map<int, char>& t_inputMap) 
 {
-    int amount = 0;
-    for (const auto& pair : t_inputMap) 
-    {
-        amount = pair.first;
-    }
+    // Get the last pair in the map using an iterator.
+    int amount = (--t_inputMap.end())->first;
     return amount;
 }
