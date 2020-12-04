@@ -18,6 +18,6 @@ $ ./word ../data/frankenstein.txt
 
 The program will then output the results onto the terminal screen.
 ## To do
- - [] Potentially make the output _prettier_
- - [] Show the frequency difference between the dictionary and the text file
- - [] Find more efficient algorithms to speed up the program
+ - [ ] Potentially make the output _prettier_
+ - [ ] Show the frequency difference between the dictionary and the text file
+ - [ ] Find more efficient algorithms to speed up the program
