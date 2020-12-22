@@ -1,9 +1,6 @@
-#include <iostream>
 #include <fstream>
 #include <cmath>
-#include <algorithm>
 #include <map>
-#include <vector>
 
 /**
     Function to check the amount of parameters given to the file.
@@ -62,7 +59,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void checkParams(int t_amountOfParams)
+void checkParams(const int t_amountOfParams)
 {
     if (t_amountOfParams == 1)
     {
@@ -71,13 +68,13 @@ void checkParams(int t_amountOfParams)
     }
 }
 
-bool isCharacterValid(char t_character)
+bool isCharacterValid(const char t_character)
 {
     // Use the standard isalpha() function to check if it is a letter.
     return std::isalpha(t_character) ? true : false;
 }
 
-std::map<char, int> countCharacters(std::string t_path) 
+std::map<char, int> countCharacters(const std::string t_filepath) 
 {
 	char character;
 	
@@ -85,7 +82,7 @@ std::map<char, int> countCharacters(std::string t_path)
 	std::map<char, int> outputMap;
 	
     // This is the input stream we use to get all the character numbers.
-	std::ifstream inputStream(t_path);
+	std::ifstream inputStream(t_filepath);
 	
     // While loop until there are no more characters left in the input stream.
 	while (inputStream.get(character))
@@ -131,7 +128,7 @@ void graphMap(std::map<int, char>& t_inputMap)
 		amountOfStars = lround(pair.first*100/largestAmount);
 
 		// Print the beginning half of the line with the letter.
-		std::printf("%c - %-6d | ", pair.second, pair.first);
+		std::printf("%c > %-6d | ", pair.second, pair.first);
 
 		// Create a loop that prints a star amountOfStars times.
 	    for (int i = 0; i < amountOfStars; i++) 
